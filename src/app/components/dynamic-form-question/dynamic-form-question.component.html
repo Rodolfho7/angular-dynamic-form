@@ -1,0 +1,19 @@
+<div [formGroup]="form">
+  <label [attr.for]="question.key">{{question.label}}</label>
+  <div [ngSwitch]="question.controlType">
+
+    <input *ngSwitchCase="'textbox'" [formControlName]="question.key" [id]="question.key" [type]="question.type">
+
+    <select *ngSwitchCase="'dropdown'" [formControlName]="question.key" [id]="question.key">
+      <option *ngFor="let option of question.options" [value]="option.key">
+        {{ option.value }}
+      </option>
+    </select>
+
+    <textarea *ngSwitchCase="'textarea'" [formControlName]="question.key" cols="30" rows="10"></textarea>
+  </div>
+
+  <div class="errorMessage" *ngIf="!isValid">
+    {{ question.label }} is required
+  </div>
+</div>
