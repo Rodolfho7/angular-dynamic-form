@@ -26,7 +26,15 @@ export class QuestionsService {
         key: 'emailAddress',
         label: 'Email',
         type: 'email',
+        required: true,
         order: 2
+      }),
+      new TextboxQuestion({
+        key: 'name',
+        label: 'Name',
+        type: 'text',
+        required: true,
+        order: 1
       }),
       new TextareaQuestion({
         key: 'description',

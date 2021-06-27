@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 
 import { FormsModule } from './form-services/forms.module';
 import { AuthGuard } from './guards/auth-guard.guard';
+import { PagesModule } from './pages/pages.module';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { AuthGuard } from './guards/auth-guard.guard';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    PagesModule,
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]

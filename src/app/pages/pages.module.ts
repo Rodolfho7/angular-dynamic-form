@@ -6,17 +6,21 @@ import { LoginComponent } from './login/login.component';
 
 import { ComponentsModule } from '../components/components.module';
 
-// import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { LoginComponentsFormComponent } from './login-components-form/login-components-form.component';
+import { LayoutModule } from '../layout/layout.module';
 
 @NgModule({
   declarations: [
     FormsComponent,
-    LoginComponent
+    LoginComponent,
+    LoginComponentsFormComponent
   ],
   imports: [
     CommonModule,
-    ComponentsModule
-    // ReactiveFormsModule
+    ComponentsModule,
+    LayoutModule,
+    ReactiveFormsModule
   ],
   // exports: [
   //   FormsComponent,

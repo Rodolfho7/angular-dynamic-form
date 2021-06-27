@@ -4,7 +4,7 @@
       <app-dynamic-form-question [form]="form" [question]="question"></app-dynamic-form-question>
     </div>
 
-    <button type="submit">Save</button>
+    <button type="submit" [disabled]="!form.valid">Save</button>
   </form>
 
   <div *ngIf="payLoad">

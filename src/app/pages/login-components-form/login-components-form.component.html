@@ -1,0 +1,15 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div *ngFor="let question of questions">
+    <div [ngSwitch]="question.controlType">
+      <app-input-text *ngSwitchCase="'textbox'" [question]="question" [form]="form"></app-input-text>
+      <app-dropdown *ngSwitchCase="'dropdown'" [question]="question" [form]="form"></app-dropdown>
+      <app-textarea *ngSwitchCase="'textarea'" [question]="question" [form]="form"></app-textarea>
+    </div>
+  </div>
+  <app-button-submit [canDisable]="true" [form]="form" label="Salvarr"></app-button-submit>
+  <!-- <button type="submit" [disabled]="!form.valid" >Salvar</button> -->
+</form>
+
+<div>
+  {{ payload | json }}
+</div>
