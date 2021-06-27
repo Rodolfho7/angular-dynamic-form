@@ -5,9 +5,7 @@ import { DropdownQuestion } from '../entities/question-dropdown';
 import { TextboxQuestion } from '../entities/question-textbox';
 import { TextareaQuestion } from '../entities/question-textarea';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class QuestionsService {
 
   // here is a simulation to a api get data

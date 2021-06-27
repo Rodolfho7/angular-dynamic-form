@@ -3,23 +3,20 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
-import { DynamicFormQuestionComponent } from './components/dynamic-form-question/dynamic-form-question.component';
 
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from './form-services/forms.module';
+import { AuthGuard } from './guards/auth-guard.guard';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    DynamicFormComponent,
-    DynamicFormQuestionComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    FormsModule,
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

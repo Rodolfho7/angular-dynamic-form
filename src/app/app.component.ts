@@ -9,11 +9,5 @@ import { QuestionsService } from './form-services/questions.service';
 })
 export class AppComponent {
   
-  questions: QuestionBase[] = [];
-
-  constructor(private questionsServices: QuestionsService) {
-    this.questionsServices.getQuestions().subscribe((questions: QuestionBase[]) => {
-      this.questions = questions;
-    });
-  }
+  constructor() {}
 }
