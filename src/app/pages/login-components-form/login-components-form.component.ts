@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
-import { QuestionsService } from '../../form-services/questions.service';
 import { QuestionBase } from '../../entities/question-base';
-import { QuestionControlService } from '../../form-services/question-control.service';
-import { FormGroup } from '@angular/forms';
+import { AbstractControl, FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login-components-form',
@@ -15,15 +13,73 @@ export class LoginComponentsFormComponent {
   form!: FormGroup;
   payload!: string;
 
-  constructor(private questionsServices: QuestionsService, private questionControlService: QuestionControlService) {
-    this.questionsServices.getQuestions().subscribe((questions: QuestionBase[]) => {
-      this.questions = questions;
-      this.form = this.questionControlService.toFormGroup(this.questions);
+  opcoes = [
+    {
+      valor: '1',
+      checked: false
+    },
+    {
+      valor: '2',
+      checked: true
+    },
+    {
+      valor: '3',
+      checked: false
+    },
+    {
+      valor: '4',
+      checked: true
+    },
+  ];
+
+  itens = "1 ano,2,3,4,5";
+
+  constructor(private fb: FormBuilder) {
+
+    this.form = this.fb.group({
+      nome: 'ro',
+      tipo: '',
+      secoes: this.fb.array([this.novaSecao()])
     });
   }
-  
+
+  get secoes() {
+    return this.form.get('secoes') as FormArray;
+  }
+
+  getQuestions(secao: AbstractControl): FormArray {
+    return (secao as FormGroup).get('questoes') as FormArray;
+  }
+
+  novaSecao(): FormGroup {
+    return this.fb.group({
+      textoInicial: '',
+      titulo: '',
+      descricao: '',
+      questoes: this.fb.array([this.novaQuestao()])
+    })
+  }
+
+  novaQuestao(): FormGroup {
+    return this.fb.group({
+      texto: '',
+      nome: '',
+      opcoes: '',
+      marcar: ''
+    });
+  }
+
+  adicionarSecao(): void {
+    this.secoes.push(this.novaSecao());
+  }
+
+  adicionarQuestao(secao: AbstractControl): void {
+    (secao.get('questoes') as FormArray).push(this.novaQuestao());
+  }
+
   onSubmit(): void {
     this.payload = this.form.getRawValue();
-    console.log(this.payload);
   }
+
+  castToFormGroup = (field: AbstractControl): FormGroup => field as FormGroup;
 }

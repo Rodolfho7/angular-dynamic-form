@@ -1,3 +1,4 @@
 <div [formGroup]="form">
-  <textarea [formControlName]="question.key" cols="30" rows="10"></textarea>
+  <label [attr.for]="nome">{{label}}</label>
+  <textarea [formControlName]="nome" cols="30" rows="10"></textarea>
 </div>

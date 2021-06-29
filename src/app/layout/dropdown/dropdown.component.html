@@ -1,7 +1,11 @@
 <div [formGroup]="form">
-  <select [formControlName]="question.key" [id]="question.key">
-    <option *ngFor="let option of question.options" [value]="option.key">
-      {{ option.value }}
+  <label [attr.for]="nome"></label>
+  <select [formControlName]="nome" [id]="nome" (change)="onChange($event)">
+    <option *ngFor="let item of itens" [value]="item.valor">
+      {{ item.valor }}
     </option>
   </select>
+  <div class="errorMessage" *ngIf="isInvalid">
+    {{ label }} is required
+  </div>
 </div>

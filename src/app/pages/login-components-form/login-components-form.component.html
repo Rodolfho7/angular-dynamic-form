@@ -1,4 +1,4 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
+<!-- <form [formGroup]="form" (ngSubmit)="onSubmit()">
   <div *ngFor="let question of questions">
     <div [ngSwitch]="question.controlType">
       <app-input-text *ngSwitchCase="'textbox'" [question]="question" [form]="form"></app-input-text>
@@ -7,9 +7,53 @@
     </div>
   </div>
   <app-button-submit [canDisable]="true" [form]="form" label="Salvarr"></app-button-submit>
-  <!-- <button type="submit" [disabled]="!form.valid" >Salvar</button> -->
+</form> -->
+
+
+
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <control-input-text formControlName="nome"></control-input-text>
+  <br>
+  <app-custom-checkbox [itens]="itens" formControlName="tipo"></app-custom-checkbox>
+  <!-- <app-input-text [form]="form" nome="nome" label="Nome"></app-input-text>
+  <app-input-text [form]="form" nome="tipo" label="Tipo"></app-input-text>
+
+  <h1>secoes</h1>
+  <button type="button" (click)="adicionarSecao()">Adicionar Secao</button>
+  <div formArrayName="secoes" *ngFor="let secao of secoes.controls; let s = index">
+    <div [formGroupName]="s">
+      <app-input-text [form]="castToFormGroup(secao)" nome="textoInicial" label="Texto inicial"></app-input-text>
+      <app-input-text [form]="castToFormGroup(secao)" nome="titulo" label="Titulo"></app-input-text>
+      <app-textarea [form]="castToFormGroup(secao)" nome="descricao" label="Descricao"></app-textarea>
+
+      <div style="margin-left: 2rem; background-color: aquamarine;">
+        <button type="button" (click)="adicionarQuestao(secao)">Adicionar Questao</button>
+        <div formArrayName="questoes" *ngFor="let questao of getQuestions(secao).controls; let q = index">
+          <div [formGroupName]="q">
+            <app-input-text [form]="castToFormGroup(questao)" nome="texto" label="Texto"></app-input-text>
+            <app-input-text [form]="castToFormGroup(questao)" nome="nome" label="Nome"></app-input-text>
+            <app-dropdown [form]="castToFormGroup(questao)" nome="opcoes" label="Opcoes" [itens]="opcoes">
+            </app-dropdown>
+            <app-multi-select [form]="castToFormGroup(questao)" nome="marcar" label="Marcar" [itens]="opcoes">
+            </app-multi-select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+  
+
+  <!-- <div *ngFor="let question of questions">
+    <div [ngSwitch]="question.controlType">
+      <app-input-text *ngSwitchCase="'textbox'" [question]="question" [form]="form"></app-input-text>
+      <app-dropdown *ngSwitchCase="'dropdown'" [question]="question" [form]="form"></app-dropdown>
+      <app-textarea *ngSwitchCase="'textarea'" [question]="question" [form]="form"></app-textarea>
+    </div>
+  </div> -->
+  <app-button-submit [canDisable]="true" [form]="form" label="Salvarr"></app-button-submit>
 </form>
 
-<div>
+<pre>
   {{ payload | json }}
-</div>
+</pre>

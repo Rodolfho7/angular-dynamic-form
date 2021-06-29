@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { QuestionBase } from '../../entities/question-base';
 
 @Component({
   selector: 'app-input-text',
@@ -9,10 +8,11 @@ import { QuestionBase } from '../../entities/question-base';
 })
 export class InputTextComponent {
 
-  @Input() question!: QuestionBase;
   @Input() form!: FormGroup;
+  @Input() nome!: string;
+  @Input() label!: string;
 
   get isInvalid(): boolean {
-    return !this.form?.controls[this.question.key].valid && this.form?.controls[this.question.key].touched;
+    return !this.form?.controls[this.nome].valid && this.form?.controls[this.nome].touched;
   }
 }

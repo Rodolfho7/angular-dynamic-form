@@ -1,0 +1,4 @@
+<label *ngFor="let item of options; let i = index" [for]="item">
+  <input  type="checkbox" [value]="item.value" [name]="item.value" [checked]="item.checked" (change)="selected($event, i)" />
+  {{ item.value }}
+</label>

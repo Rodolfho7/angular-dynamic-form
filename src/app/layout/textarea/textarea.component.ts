@@ -9,10 +9,11 @@ import { QuestionBase } from '../../entities/question-base';
 })
 export class TextareaComponent {
 
-  @Input() question!: QuestionBase;
+  @Input() nome!: string;
+  @Input() label!: string;
   @Input() form!: FormGroup;
 
   get isInvalid(): boolean {
-    return !this.form?.controls[this.question.key].valid && this.form?.controls[this.question.key].touched;
+    return !this.form?.controls[this.nome].valid && this.form?.controls[this.nome].touched;
   }
 }
